@@ -84,14 +84,14 @@ export const constantRoutes = [
     ]
   },
   {
-    path: '/documentation',
+    path: '/gamesManager',
     component: Layout,
     children: [
       {
         path: 'index',
-        component: () => import('@/views/documentation/index'),
-        name: 'Documentation',
-        meta: { title: 'Documentation', icon: 'documentation', affix: true }
+        component: () => import('@/views/gamesManager/index'),
+        name: 'gamesManager',
+        meta: { title: '游戏服务器管理', icon: 'documentation', affix: true }
       }
     ]
   },
