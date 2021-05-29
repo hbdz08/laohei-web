@@ -351,7 +351,7 @@ export default {
             this.dialogFormVisible = false
             this.$notify({
               title: 'Success',
-              message: 'Update Successfully',
+              message: '更新成功',
               type: 'success',
               duration: 2000
             })
@@ -365,7 +365,7 @@ export default {
       deleteById(this.deleteQuery).then(() => {
         this.$notify({
           title: 'Success',
-          message: 'Delete Successfully',
+          message: '删除成功',
           type: 'success',
           duration: 2000
         })
