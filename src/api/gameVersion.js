@@ -16,26 +16,34 @@ export function getById(id) {
   })
 }
 
-export function fetchPv(pv) {
+export function updateSort(data) {
   return request({
-    url: '/vue-element-admin/article/pv',
+    url: '/game/version/updateSort',
+    method: 'post',
+    data
+  })
+}
+
+export function create(data) {
+  return request({
+    url: '/game/version/add',
+    method: 'post',
+    data
+  })
+}
+
+export function update(data) {
+  return request({
+    url: '/game/version/update',
+    method: 'post',
+    data
+  })
+}
+
+export function deleteById(id) {
+  return request({
+    url: '/game/version/delete',
     method: 'get',
-    params: { pv }
-  })
-}
-
-export function createArticle(data) {
-  return request({
-    url: '/vue-element-admin/article/create',
-    method: 'post',
-    data
-  })
-}
-
-export function updateArticle(data) {
-  return request({
-    url: '/vue-element-admin/article/update',
-    method: 'post',
-    data
+    params: id
   })
 }

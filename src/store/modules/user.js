@@ -34,8 +34,6 @@ const actions = {
     const { username, password } = userInfo
     return login({ username: username.trim(), password: password }).then(response => {
       const { data } = response
-      console.log(response)
-      console.log('response')
       commit('SET_TOKEN', data.token)
       setToken(data.token)
     }).catch(() => {
@@ -46,19 +44,19 @@ const actions = {
   // get user info
   getInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
-      getInfo(state.token).then(response => {
+      getInfo().then(response => {
         const { data } = response
 
         if (!data) {
           reject('Verification failed, please Login again.')
         }
-
+        console.log(data)
         const { roles, name, avatar, introduction } = data
 
         // roles must be a non-empty array
-        if (!roles || roles.length <= 0) {
-          reject('getInfo: roles must be a non-null array!')
-        }
+        // if (!roles || roles.length <= 0) {
+        //   reject('getInfo: roles must be a non-null array!')
+        // }
 
         commit('SET_ROLES', roles)
         commit('SET_NAME', name)
