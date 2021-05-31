@@ -1,12 +1,10 @@
 <template>
   <div class="app-container">
     <div class="filter-container">
-      <el-input v-model="listQuery.title" placeholder="服务器名称" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter" />
-      <el-select v-model="listQuery.importance" placeholder="Imp" clearable style="width: 90px" class="filter-item">
-        <el-option v-for="item in importanceOptions" :key="item" :label="item" :value="item" />
-      </el-select>
-      <el-select v-model="listQuery.type" placeholder="Type" clearable class="filter-item" style="width: 130px">
-        <el-option v-for="item in calendarTypeOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key" />
+      <el-input v-model="listQuery.name" placeholder="服务器名称" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter" />
+
+      <el-select v-model="listQuery.type" placeholder="服务器状态" clearable class="filter-item" style="width: 180px">
+        <el-option v-for="item in calendarTypeOptions" :key="item.id" :label="item.display_name" :value="item.id" />
       </el-select>
 
       <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">
@@ -96,10 +94,13 @@
         <el-form-item label="开区时间">
           <el-input v-model="temp.openTime" :autosize="{ minRows: 2, maxRows: 4}" type="textarea" placeholder="请输入" />
         </el-form-item>
-        <el-form-item label="开区状态" prop="type">
+        <el-form-item label="开区状态" prop="state">
           <el-select v-model="temp.state" class="filter-item" placeholder="请选择">
             <el-option v-for="item in calendarTypeOptions" :key="item.id" :label="item.display_name" :value="item.id" />
           </el-select>
+        </el-form-item>
+        <el-form-item label="下载链接">
+          <el-input v-model="temp.downloadLink" :autosize="{ minRows: 2, maxRows: 4}" type="textarea" placeholder="请输入" />
         </el-form-item>
 
       </el-form>
@@ -327,6 +328,7 @@ export default {
               type: 'success',
               duration: 2000
             })
+            this.getList()
           })
         }
       })
