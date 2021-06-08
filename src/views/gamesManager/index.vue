@@ -182,7 +182,8 @@ export default {
         importance: undefined,
         title: undefined,
         type: undefined,
-        sort: '+id'
+        sort: '+id',
+        domain: 3
       },
       deleteQuery: {
         id: 1
